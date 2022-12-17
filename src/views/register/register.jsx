@@ -4,10 +4,6 @@ import React, {useEffect, useState} from "react";
 import "./register.scss";
 
 function Register() {
-
-    useEffect(() => {
-        document.title = "The Wall | Sign Up";
-    }, []);
     
     const REGEX = {
         email_validation: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
@@ -16,6 +12,14 @@ function Register() {
     const [emailError, setEmailError] = useState(true);
     const [passwordError, setPasswordError] = useState(true);
     const [confirmPasswordError, setConfirmPasswordError] = useState(true);
+
+    useEffect(() => {
+        document.title = "The Wall | Sign Up";
+        if(emailError === false && passwordError === false && confirmPasswordError === false){
+            window.location.href = "/";
+        }
+
+    }, [emailError, passwordError, confirmPasswordError]);
 
     const submitLoginForm = (event) => {
         event.preventDefault();
@@ -53,9 +57,9 @@ function Register() {
             setConfirmPasswordError(false);
         }
 
-        if(emailError === false && passwordError === false && confirmPasswordError === false){
-            window.location.href = "/";
-        }
+        // if(emailError === false && passwordError === false && confirmPasswordError === false){
+        //     window.location.href = "/";
+        // }
     }
     
     return (
