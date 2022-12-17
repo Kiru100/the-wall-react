@@ -6,7 +6,7 @@ function InputGroup(props){
         <label className="input_group">
             {props.name}
             {props.login_email ?  <a href="/">Forgot Password ?</a> : null}
-            <input type={props.type} className={props.error_message.length === undefined ? "" : "wrong_input"  }/>
+            <input type={props.type} className={props.error_message.length === undefined ? "" : "wrong_input"  } tabIndex={props.tab_index}/>
             {props.error_message.length < 0 ? null : <p className="error_message">{props.error_message}</p> }
         </label>
     )
