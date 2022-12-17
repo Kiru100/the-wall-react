@@ -4,16 +4,22 @@ import React, {useEffect, useState} from "react";
 import "./login.scss";
 
 function Login() {
-    useEffect(() => {
-        document.title = "The Wall | Sign In"
-    }, []);
-    
+
     const REGEX = {
         email_validation: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
     }
 
     const [emailError, setEmailError] = useState(true);
     const [passwordError, setPasswordError] = useState(true);
+
+    useEffect(() => {
+        document.title = "The Wall | Sign In";
+
+        if(emailError === false && passwordError === false){
+            window.location.href = "/home";
+        }
+        
+    }, [emailError, passwordError]);
 
     const submitLoginForm = (event) => {
         event.preventDefault();
@@ -41,10 +47,6 @@ function Login() {
         }
         else{
             setPasswordError(false);
-        }
-
-        if(emailError === false && passwordError === false){
-            window.location.href = "/home";
         }
     }
     
