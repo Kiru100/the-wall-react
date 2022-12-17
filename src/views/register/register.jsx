@@ -68,9 +68,9 @@ function Register() {
                 <form onSubmit={submitLoginForm}>
                     <h1>The Wall</h1>
                     <h2>Register</h2>
-                    <InputGroup name="Email" type="email" error_message={emailError}/>
-                    <InputGroup name="Password" type="password" error_message={passwordError}/>
-                    <InputGroup name="Confirm Password" type="password" error_message={confirmPasswordError}/>
+                    <InputGroup name="Email" type="email" error_message={emailError} tab_index={1}/>
+                    <InputGroup name="Password" type="password" error_message={passwordError} tab_index={2}/>
+                    <InputGroup name="Confirm Password" type="password" error_message={confirmPasswordError} tab_index={3}/>
                     <p className="agreement">By creating an account, you agree with the Wall's <a href="/register">Privacy Policy</a> and <a href="/register">Terms of Use</a>.</p>
                     <button type="submit">SIGN IN</button>
                     <p className="sign_in_link">Already have an account ? <a href="/">Sign In</a></p>

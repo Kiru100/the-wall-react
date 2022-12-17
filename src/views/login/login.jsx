@@ -58,8 +58,8 @@ function Login() {
                 <form onSubmit={submitLoginForm}>
                     <h1>The Wall</h1>
                     <h2>Log In</h2>
-                    <InputGroup name="Email" type="email" error_message={emailError}/>
-                    <InputGroup name="Password" type="password" error_message={passwordError} login_email={true}/>
+                    <InputGroup name="Email" type="email" error_message={emailError} tab_index={1}/>
+                    <InputGroup name="Password" type="password" error_message={passwordError} login_email={true} tab_index={2}/>
                     <button type="submit">SIGN IN</button>
                     <p className="sign_up_link">I don't have an account? <a href="/register">Sign Up</a></p>
                 </form>
