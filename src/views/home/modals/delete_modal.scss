@@ -1,0 +1,35 @@
+@use "./global_modal";
+
+.delete_modal{
+    @include global_modal.modal();
+
+    .modal_panel{
+        @include global_modal.modal_content();
+        max-width: 540px;
+        min-height: 307px;
+        padding: 46px;
+        width: 100%;
+
+        h2{
+            margin-bottom: 34px;
+        }
+        p{
+            text-align: center;
+        }
+
+        .modal_button_container{
+            display: flex;
+            justify-content: center;
+            margin-top: 31px;
+
+            button[type="submit"]{
+                @include global_modal.submit_btn();
+                margin-left: 75px;
+            }
+    
+            button[type="button"]{
+                @include global_modal.cancel_btn();
+            }
+        }
+    }
+}
