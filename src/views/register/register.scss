@@ -1,0 +1,100 @@
+@use "../../assets/scss/global.scss";
+
+.register{
+    background-color: global.$alabaster;
+    
+    main{
+        align-items: center;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+
+        form{
+            background-color: global.$white;
+            border: 6px;
+            box-shadow: 0px 4px 8px 0px #0000000D;
+            height: 758px;
+            padding: 30px 40px;
+            width: 450px;
+
+            h1{
+                font: 600 22px/33px Poppins;
+                color: global.$secondary_color;
+            }
+
+            h2{
+                color: global.$primary_color;
+                font: 600 40px/60px Poppins;
+                margin-top: 39px;
+            }
+
+            button[type="submit"]{
+                background-color: global.$secondary_color;
+                border-radius: 4px;
+                border: none;
+                color: global.$white;
+                cursor: pointer;
+                display: block;
+                font: 600 16px/24px Poppins;
+                margin-top: 40px;
+                margin: 40px auto 0;
+                padding: 15px 45px;
+
+                &:hover{
+                    background-color: darken(global.$secondary_color, 10%);
+                }
+            }
+
+            .agreement{
+                color: global.$primary_color;
+                font: 300 16px/24px Poppins;
+                margin-top: 40px;
+                text-align: center;
+
+                a{
+                    color: global.$secondary_color;
+                    text-decoration: none;
+                }
+            }
+
+            .sign_in_link{
+                color: global.$light_grey;
+                font: 400 16px/22px Poppins;
+                margin-top: 40px;
+                text-align: center;
+
+                a{
+                    color: global.$secondary_color;
+                    font: 400 16px/22px Poppins;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    .image_holder{
+        background-color: global.$periwinkle_blue;
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .register{
+        display: flex;
+
+        main{
+            flex-grow: 3;
+        }
+
+        .image_holder{
+            align-items: center;
+            display: inherit;
+            flex-grow: 1;
+
+            img{
+                margin-left: -65px;
+                max-width: 600px;
+            }
+        } 
+    }
+    
+}

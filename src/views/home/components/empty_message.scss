@@ -1,0 +1,13 @@
+@use "../../../assets/scss/global";
+
+#empty_message_container{
+    color: global.$smokey_grey;
+    font: 400 16px/24px Poppins;
+    margin-top: 125px;
+    text-align: center;
+
+    img{
+        height: 49px;
+        width: 40px;
+    }
+}

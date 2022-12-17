@@ -1,0 +1,111 @@
+@use "../../../assets/scss/global";
+
+.message_item,
+.comment_item{
+    border-radius: 6px;
+    border: 1px solid global.$lavender_mist;
+    list-style-type: none;
+    margin-top: 20px;
+    padding: 20px;
+
+    .message_wrapper,
+    .comment_wrapper{
+        
+        .message_text,
+        .comment_text{
+            color: global.$primary_color;
+            font: 300 16px/24px Poppins;
+            margin-bottom: 10px;
+            max-height: 250px;
+            overflow: auto;
+            word-wrap: break-word;
+        }
+
+        .buttons_container{
+            list-style-type: none;
+
+            li{
+                display: inline-block;
+                vertical-align: middle;
+
+                .comment_btn,
+                .edit_btn,
+                .delete_btn,
+                .time_ago{
+                    background-color: transparent;
+                    border: none;
+                    color: global.$inactive_grey;
+                    cursor: pointer;
+                    font: 400 16px/24px Poppins;
+                    margin-right: 10px;
+                }
+
+                .edit_btn{
+                    color: global.$secondary_color;
+                }
+
+                .time_ago{
+                    .user_name{
+                        font: 600 16px/24px Poppins;
+                    }
+                }
+            }
+            
+            button.active{
+                color: global.$secondary_color;
+
+                .comment_icon{
+                    @include global.icon();
+                    background: url("../../../assets/images/icons_group.png") no-repeat 0px -33px;
+                }
+            }
+        }
+    }
+
+    .edit_message_form,
+    .new_comment_form,
+    .edit_comment_form{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+
+        .edit_message_textarea,
+        .new_comment_form_textarea{
+            @include global.textarea();
+            margin-bottom: 20px;
+        }
+
+        button[type="button"]{
+            margin-right: 30px;
+            @include global.cancel_btn();
+        }
+
+        button[type="submit"]{
+            @include global.submit_btn();
+        }
+
+        &:nth-of-type(2){
+            margin-top: 20px;
+        }
+    }
+
+    .comment_icon{
+        @include global.icon();
+        background: url("../../../assets/images/icons_group.png") no-repeat 0px -3px;
+    }
+
+    .edit_icon{
+        @include global.icon();
+        background: url("../../../assets/images/icons_group.png") no-repeat -30px -5px;
+    }
+
+    .delete_icon{
+        @include global.icon();
+        background: url("../../../assets/images/icons_group.png") no-repeat -60px -5px;
+    }
+
+    .user_icon{
+        @include global.icon();
+        background: url("../../../assets/images/user_icon.png") no-repeat center;
+    }
+}

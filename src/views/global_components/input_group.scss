@@ -1,0 +1,50 @@
+@use "../../assets/scss/global.scss";
+
+.input_group{
+    color: global.$primary_color;
+    display: block;
+    font: 300 16px/24px Poppins;
+    margin-top: 28px;
+    position: relative;
+    
+    input{
+        background-color: global.$water;
+        border-radius: 4px;
+        border: 4px;
+        border: none;
+        color: global.$primary_color;
+        font: 400 14px/21px Poppins;
+        height: 50px;
+        margin-top: 7px;
+        padding: 10px 17px;
+        width: 100%;
+
+        &:focus{
+            outline: none;
+        }
+
+        &.wrong_input{
+            background-color: global.$light_valentine_red;
+        }
+    }
+
+    a{
+        color: global.$black;
+        font: 300 14px/21px Poppins;
+        opacity: 0.5;
+        position: absolute;
+        right: 0;
+        text-decoration: none;
+    }
+
+    .error_message{
+        color: global.$valentine_red;
+        font: 300 14px/21px Poppins;
+        margin-top: 5px;
+        position: absolute;
+    }
+
+    &:nth-of-type(1){
+        margin-top: 18px;
+    }
+}

@@ -1,0 +1,74 @@
+$alabaster: #fbfbfb;
+$black: #000;
+$inactive_grey: #00000099;
+$lavender_mist: #dce6ff;
+$light_grey: #00000033;
+$light_valentine_red: #E1554C14;
+$periwinkle_blue: #86a7f2;
+$primary_color: #152c61;
+$secondary_color: #2c6bff;
+$smokey_grey: #707070;
+$valentine_red: #e1554c;
+$water: #eef3ff;
+$white: #fff;
+$zircon: #f5f8ff;
+
+.hidden{
+    display: none !important;
+}
+
+@mixin container{
+    margin: 0 auto;
+    max-width: 1440px;
+}
+
+@mixin submit_btn{
+    background-color: $secondary_color;
+    border-radius: 6px;
+    border: none;
+    color: $white;
+    cursor: pointer;
+    font: 500 16px/24px Poppins;
+    height: 38px;
+    width: 190px;
+
+    &:hover{
+        background-color: darken($secondary_color, 10%);
+    }
+
+    &.disabled{
+        background-color: lighten($secondary_color, 10%);
+    }
+}
+
+@mixin icon{
+    display: inline-block;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: text-top;
+    width: 24px;
+}
+
+@mixin textarea{
+    background-color: $zircon;
+    border-radius: 6px;
+    border: 1px solid $lavender_mist;
+    color: $primary_color;
+    display: block;
+    font: 300 16px/24px Poppins;
+    padding: 10px;
+    resize: none;
+    width: 100%;
+
+    &:focus{
+        outline: none;
+    }
+}
+
+@mixin cancel_btn{
+    background-color: transparent;
+    border: none;
+    color: $inactive_grey;
+    cursor: pointer;
+    font: 400 16px/24px Poppins;
+}

@@ -1,0 +1,44 @@
+@use "../../../assets/scss/global";
+@forward "../../../assets/scss/global";
+
+@mixin modal{
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+
+@mixin modal_content{
+    background-color: global.$white;
+    border-radius: 6px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    .close_modal_btn{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+
+        span{
+            @include global.icon();
+            background: url("../../../assets/images/icons_group.png") no-repeat -90px -5px;
+            
+        }
+    }
+
+    h2{
+        color: global.$primary_color;
+        font: 500 26px/39px Poppins;
+        text-align: center;
+    }
+}
