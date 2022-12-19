@@ -1,15 +1,10 @@
 import "./create_message_modal.scss";
-import React, {useRef, useState, useEffect} from "react";
+import React, {useRef} from "react";
 import {handleTextAreaKeyUp} from "../../../assets/javascript/global";
 
 function CreateMessageModal(props){
 
-    const [disabled, setDisabled] = useState(true);
     const submit_button = useRef(null);
-
-    useEffect(() => {
-        submit_button.current.disabled = true;
-    }, []);
 
     const handleClose = () =>{
         props.onCloseModal();
@@ -29,7 +24,7 @@ function CreateMessageModal(props){
                 <textarea name="create_message_textarea" placeholder="Type your message here." className="create_message_textarea" onKeyUp={(event)=>handleTextAreaKeyUp(event, submit_button)}></textarea>
                 <div className="modal_button_container">
                     <button type="button" onClick={handleClose}>Cancel</button>
-                    <button type="submit" ref={submit_button} className={`${disabled ? "disabled" : null}`}>Post Message</button>
+                    <button type="submit" ref={submit_button} className="disabled" disabled>Post Message</button>
                 </div>
             </form>
         </div>

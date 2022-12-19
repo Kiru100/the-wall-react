@@ -64,7 +64,7 @@ function CommentItem(props){
                     onKeyUp={(event)=>handleTextAreaKeyUp(event, update_comment_btn)}
                     ref={edit_comment_textarea}></textarea>
                 <button type="button" className="cancel_btn" onClick={toggleEdit}>Cancel</button>
-                <button type="submit" ref={update_comment_btn}>Update Comment</button>
+                <button type="submit" ref={update_comment_btn} className="disabled" disabled>Update Comment</button>
             </form>
         </li>
     )
