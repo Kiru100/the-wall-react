@@ -1,44 +1,17 @@
-@use "../../../assets/scss/global";
+@use "./global_modal";
 
 .create_new_message_modal{
-    background-color: rgba($color: #000000, $alpha: 0.5);
-    height: 100%;
-    left: 0;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-
+    @include global_modal.modal();
+ 
     .modal_content{
-        background-color: global.$white;
-        border-radius: 6px;
-        left: 50%;
+        @include global_modal.modal_content();
         max-height: 423px;
         max-width: 937px;
         padding: 50px;
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
         width: 100%;
 
-        .close_modal_btn{
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            position: absolute;
-            right: 20px;
-            top: 20px;
-
-            span{
-                @include global.icon();
-                background: url("../../../assets/images/icons_group.png") no-repeat -90px -5px;
-                
-            }
-        }
-
         .create_message_textarea{
-            @include global.textarea();
+            @include global_modal.textarea();
             height: 185px;
             margin-top: 40px;
             width: 100%;
@@ -51,18 +24,12 @@
 
             button[type="submit"]{
                 margin-left: 24px;
-                @include global.submit_btn();
+                @include global_modal.submit_btn();
             }
     
             button[type="button"]{
-                @include global.cancel_btn();
+                @include global_modal.cancel_btn();
             }
-        }
-
-        h2{
-            color: global.$primary_color;
-            font: 500 26px/39px Poppins;
-            text-align: center;
         }
     }
 }

@@ -1,6 +1,5 @@
 import React,{useState, useRef} from "react";
 
-
 function CommentItem(props){
 
     const [isEditActive, setEditActive] = useState(false);

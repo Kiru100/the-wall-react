@@ -1,13 +1,10 @@
 import InputGroup from "../global_components/input_group";
 import image_of_person from "../../assets/images/Group_2019.svg";
 import React, {useEffect, useState} from "react";
+import {REGEX} from '../../assets/javascript/global';
 import "./register.scss";
 
 function Register() {
-    
-    const REGEX = {
-        email_validation: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
-    }
 
     const [emailError, setEmailError] = useState(true);
     const [passwordError, setPasswordError] = useState(true);
@@ -15,6 +12,7 @@ function Register() {
 
     useEffect(() => {
         document.title = "The Wall | Sign Up";
+        
         if(emailError === false && passwordError === false && confirmPasswordError === false){
             window.location.href = "/";
         }
@@ -56,10 +54,6 @@ function Register() {
         else{
             setConfirmPasswordError(false);
         }
-
-        // if(emailError === false && passwordError === false && confirmPasswordError === false){
-        //     window.location.href = "/";
-        // }
     }
     
     return (

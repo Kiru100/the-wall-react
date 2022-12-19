@@ -54,7 +54,6 @@
             }
     }
 
-
         #create_new_message_container{
             text-align: center;
 
@@ -67,6 +66,7 @@
                     font: 600 16px/24px Poppins;
                 }
             }
+
             button[type="button"]{
                 @include global.submit_btn();
                 margin-top: 5px;

@@ -1,13 +1,11 @@
 import InputGroup from "../global_components/input_group";
 import image_of_person from "../../assets/images/Group_2019.svg";
 import React, {useEffect, useState} from "react";
+import {REGEX} from '../../assets/javascript/global';
 import "./login.scss";
 
-function Login() {
 
-    const REGEX = {
-        email_validation: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
-    }
+function Login() {
 
     const [emailError, setEmailError] = useState(true);
     const [passwordError, setPasswordError] = useState(true);
