@@ -31,11 +31,10 @@
                 font: 300 16px/24px Poppins;
 
                 a{  
-                    margin-left: 16px;
                     color: global.$secondary_color;
                     font: 600 16px/24px Poppins;
+                    margin-left: 16px;
                 }
-
             }
         }
     }
@@ -54,25 +53,25 @@
             }
     }
 
-        #create_new_message_container{
-            text-align: center;
+    #create_new_message_container{
+        text-align: center;
 
-            p{
-                color: global.$smokey_grey;
-                font: 400 16px/24px Poppins;
+        p{
+            color: global.$smokey_grey;
+            font: 400 16px/24px Poppins;
 
-                span{
-                    color: global.$secondary_color;
-                    font: 600 16px/24px Poppins;
-                }
-            }
-
-            button[type="button"]{
-                @include global.submit_btn();
-                margin-top: 5px;
+            span{
+                color: global.$secondary_color;
+                font: 600 16px/24px Poppins;
             }
         }
+
+        button[type="button"]{
+            @include global.submit_btn();
+            margin-top: 5px;
+        }
     }
+}
 
 @media only screen and (min-width: 600px){
     .home{
@@ -96,9 +95,7 @@
                 display: flex;
                 justify-content: space-between;
             }
-
         }
-
     }
 }
 
@@ -115,7 +112,6 @@
             margin: 50px auto;
             padding: 70px;
         }
-
     }
 }
 

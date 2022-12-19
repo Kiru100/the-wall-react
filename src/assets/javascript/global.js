@@ -16,7 +16,6 @@ const handleTextAreaKeyUp = (event, button) =>{
     }
 }
 
-
 const toggleEdit = (stateName, setState, textarea, text) =>{
     if(stateName){
         setState(false);
@@ -26,7 +25,6 @@ const toggleEdit = (stateName, setState, textarea, text) =>{
         setState(true);
     }
 }
-
 
 
 export { REGEX, handleTextAreaKeyUp, toggleEdit};

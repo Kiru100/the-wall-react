@@ -19,7 +19,7 @@ function CommentItem(props){
     }
 
     const toggleEditComment = () =>{
-        toggleEdit(isEditActive, setEditActive, edit_comment_textarea, props.comment_text)
+        toggleEdit(isEditActive, setEditActive, edit_comment_textarea, props.comment_text);
     }
 
     return(

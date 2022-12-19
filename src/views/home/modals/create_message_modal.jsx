@@ -34,4 +34,5 @@ function CreateMessageModal(props){
         </div>
     )
 }
+
 export default CreateMessageModal;

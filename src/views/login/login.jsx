@@ -10,9 +10,12 @@ function Login() {
     const [emailError, setEmailError] = useState(true);
     const [passwordError, setPasswordError] = useState(true);
 
-    useEffect(() => {
+    useEffect(() =>{
         document.title = "The Wall | Sign In";
+    },[])
 
+    useEffect(() => {
+        
         if(emailError === false && passwordError === false){
             window.location.href = "/home";
         }

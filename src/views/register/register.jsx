@@ -10,9 +10,12 @@ function Register() {
     const [passwordError, setPasswordError] = useState(true);
     const [confirmPasswordError, setConfirmPasswordError] = useState(true);
 
-    useEffect(() => {
+    useEffect(() =>{
         document.title = "The Wall | Sign Up";
-        
+    },[])
+
+    useEffect(() => {
+
         if(emailError === false && passwordError === false && confirmPasswordError === false){
             window.location.href = "/";
         }
