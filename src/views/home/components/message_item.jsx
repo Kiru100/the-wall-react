@@ -1,5 +1,6 @@
 import CommentItem from "./comment_item";
 import React, {useState, useRef} from "react";
+import {handleTextAreaKeyUp} from "../../../assets/javascript/global";
 import "./message_item.scss";
 
 function MessageItem(props){
@@ -49,19 +50,6 @@ function MessageItem(props){
         add_comment_textarea.current.value = "";
         post_comment_btn.current.disabled = true;
         post_comment_btn.current.classList.add('disabled');
-    }
-
-    const handleTextAreaKeyUp = (event, button) =>{
-        let textarea_value = event.target.value;
-
-        if(textarea_value.trim()){
-            button.current.disabled = false;
-            button.current.classList.remove("disabled");
-        }
-        else{
-            button.current.disabled = true;
-            button.current.classList.add("disabled");
-        }
     }
 
 

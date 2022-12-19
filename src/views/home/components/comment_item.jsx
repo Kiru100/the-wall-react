@@ -1,4 +1,5 @@
 import React,{useState, useRef} from "react";
+import {handleTextAreaKeyUp} from "../../../assets/javascript/global";
 
 function CommentItem(props){
 
@@ -18,19 +19,6 @@ function CommentItem(props){
 
     const showDeleteModal = () =>{
         props.onShowDeleteCommentModal(props.message_id, "comment", props.comment_id);
-    }
-
-    const handleTextAreaKeyUp = (event, button) =>{
-        let textarea_value = event.target.value;
-
-        if(textarea_value.trim()){
-            button.current.disabled = false;
-            button.current.classList.remove("disabled");
-        }
-        else{
-            button.current.disabled = true;
-            button.current.classList.add("disabled");
-        }
     }
 
     const handleEditSubmit = (event) =>{
