@@ -50,7 +50,7 @@
         padding: 20px;
 
         #message_container{
-            list-style-type: none;
+                list-style-type: none;
             }
     }
 
@@ -116,5 +116,15 @@
             padding: 70px;
         }
 
+    }
+}
+
+@media only screen and (min-width: 1440px){
+    .home{
+        header{
+            div{
+                padding: 20px 0;
+            }
+        }
     }
 }
