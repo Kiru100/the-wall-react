@@ -75,9 +75,7 @@ function Home() {
                                 onEditMessage={editMessage}
                                 onEditComment={editComment}
                                 onAddComment={addNewComment}
-                                message_id={message_index}
-
-        />);
+                                message_id={message_index}/>);
     }
 
     return (

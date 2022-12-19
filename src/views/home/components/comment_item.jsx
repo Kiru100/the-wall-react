@@ -1,5 +1,5 @@
 import React,{useState, useRef} from "react";
-import {handleTextAreaKeyUp} from "../../../assets/javascript/global";
+import {handleTextAreaKeyUp, toggleEdit} from "../../../assets/javascript/global";
 
 function CommentItem(props){
 
@@ -7,26 +7,19 @@ function CommentItem(props){
     const edit_comment_textarea = useRef(null);
     const update_comment_btn = useRef(null);
 
-    const toggleEdit = () =>{
-        if(isEditActive){
-            setEditActive(false);
-        }
-        else{
-            edit_comment_textarea.current.value = props.comment_text;
-            setEditActive(true);
-        }
-    }
-
     const showDeleteModal = () =>{
         props.onShowDeleteCommentModal(props.message_id, "comment", props.comment_id);
     }
 
     const handleEditSubmit = (event) =>{
         event.preventDefault();
-        toggleEdit();
-
         let comment_text = edit_comment_textarea.current.value;
         props.onEditComment(comment_text, props.message_id, props.comment_id);
+        toggleEditComment();
+    }
+
+    const toggleEditComment = () =>{
+        toggleEdit(isEditActive, setEditActive, edit_comment_textarea, props.comment_text)
     }
 
     return(
@@ -37,7 +30,7 @@ function CommentItem(props){
                 </p>
                 <ul className="buttons_container">
                     <li>
-                        <button type="button" className="edit_btn" onClick={toggleEdit}>
+                        <button type="button" className="edit_btn" onClick={toggleEditComment}>
                             <span className="edit_icon"></span> 
                             Edit
                         </button> 
@@ -63,7 +56,7 @@ function CommentItem(props){
                     placeholder="Type your message here."
                     onKeyUp={(event)=>handleTextAreaKeyUp(event, update_comment_btn)}
                     ref={edit_comment_textarea}></textarea>
-                <button type="button" className="cancel_btn" onClick={toggleEdit}>Cancel</button>
+                <button type="button" className="cancel_btn" onClick={toggleEditComment}>Cancel</button>
                 <button type="submit" ref={update_comment_btn} className="disabled" disabled>Update Comment</button>
             </form>
         </li>

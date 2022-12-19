@@ -1,6 +1,6 @@
 import CommentItem from "./comment_item";
 import React, {useState, useRef} from "react";
-import {handleTextAreaKeyUp} from "../../../assets/javascript/global";
+import {handleTextAreaKeyUp, toggleEdit} from "../../../assets/javascript/global";
 import "./message_item.scss";
 
 function MessageItem(props){
@@ -16,14 +16,8 @@ function MessageItem(props){
     const comment_list = [];
     let comment_count = Object.keys(props.comment_list).length;
 
-    const toggleEdit = () =>{
-        if(isEditActive){
-            setEditActive(false);
-        }
-        else{
-            edit_message_textarea.current.value = props.message_text;
-            setEditActive(true);
-        }
+    const toggleEditMessage = () =>{
+        toggleEdit(isEditActive, setEditActive, edit_message_textarea, props.message_text);
     }
 
     const toggleAddComment = () =>{
@@ -37,10 +31,9 @@ function MessageItem(props){
 
     const handleEditSubmit = (event) =>{
         event.preventDefault();
-        toggleEdit();
-
         let message_text = edit_message_textarea.current.value;
-        props.onEditMessage(message_text, props.message_id)
+        props.onEditMessage(message_text, props.message_id);
+        toggleEditMessage();
     }
 
     const handleAddComment = (event) =>{
@@ -78,7 +71,7 @@ function MessageItem(props){
                         </button>
                     </li>
                     <li>
-                        <button type="button" className="edit_btn" onClick={toggleEdit}>
+                        <button type="button" className="edit_btn" onClick={toggleEditMessage}>
                             <span className="edit_icon"></span> 
                             Edit
                         </button> 
@@ -104,7 +97,7 @@ function MessageItem(props){
                     placeholder="Type your message here." 
                     ref={edit_message_textarea}
                     onKeyUp={(event)=>handleTextAreaKeyUp(event, update_message_btn)}></textarea>
-                <button type="button" className="cancel_btn" onClick={toggleEdit}>Cancel</button>
+                <button type="button" className="cancel_btn" onClick={toggleEditMessage}>Cancel</button>
                 <button type="submit" ref={update_message_btn}>Update Message</button>
             </form>
             <form className={`new_comment_form ${isAddCommentActive ? "" : "hidden"}`} onSubmit={handleAddComment}>
