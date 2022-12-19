@@ -1,9 +1,10 @@
-import React,{ useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import MessageItem from "./components/message_item";
 import EmptyMessage from "./components/empty_message";
 import CreateMessageModal from "./modals/create_message_modal";
 import DeleteMessageModal from "./modals/delete_message_modal";
 import DeleteCommentModal from "./modals/delete_comment_modal";
+import data from "../../assets/data/message.json";
 import "./home.scss";
 
 function Home() {
@@ -20,20 +21,7 @@ function Home() {
     const [messageToDelete, setMessageToDelete] = useState(0);
     const [commentToDelete, setCommentToDelete] = useState([]);
 
-    const [message, setMessage] = useState({
-                            11111111:{  message_text:"this is sparta message",
-                                        comments:{ 12312412412:"this is comment secret1",
-                                                   45645645664:"this is comment serasdas2",   
-                                                   45643233364:"this is comment serasdas2",   
-                                        }
-                            },
-                            22222222:{  message_text:"this is sparta message 2",
-                                        comments:{ 2332312:"this is comment2 secret1",
-                                                42335645664:"this is comment2 serasdas2",   
-                                                11233233364:"this is comment2 serasdas2",   
-                                        }
-                            }           
-                        });
+    const [message, setMessage] = useState(data);
     let message_count = Object.keys(message).length;
 
     const addNewMessage = (message_text_value) =>{
@@ -53,7 +41,6 @@ function Home() {
     }
 
     const editComment = (new_comment, message_id, comment_id) =>{
-        console.log(new_comment, message_id, comment_id);
         message[message_id].comments[comment_id] = new_comment;
         setMessage({...message});  
     }
@@ -107,8 +94,8 @@ function Home() {
                         <p><span>{message_count}</span> messages arranged latest posted</p>
                         <button type="button" 
                                 id="create_new_message_btn" 
-                                onClick={()=>setShowCreateMessageModal(true)}
-                                >Create Message</button>
+                                onClick={()=>setShowCreateMessageModal(true)}>
+                                Create Message</button>
                     </div>
                     <ul id="message_container">
                         {message_list.splice(0).reverse()}
