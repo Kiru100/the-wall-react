@@ -24,8 +24,7 @@
             li{
                 display: inline-block;
                 vertical-align: middle;
-
-                .comment_btn,
+                
                 .edit_btn,
                 .delete_btn,
                 .time_ago{
@@ -64,7 +63,7 @@
         flex-wrap: wrap;
         justify-content: flex-end;
 
-        .new_comment_form_textarea{
+        .edit_comment_textarea{
             @include global.textarea();
             margin-bottom: 20px;
         }

@@ -14,7 +14,7 @@ function CommentItem(props){
 
     const handleEditSubmit = (event) =>{
         event.preventDefault();
-        let comment_text = event.target.edit_message_textarea.value;
+        let comment_text = event.target.edit_comment_textarea.value;
         props.onEditComment(comment_text, props.message_id, props.comment_id);
         toggleEditComment();
     }
@@ -52,8 +52,8 @@ function CommentItem(props){
             </div>
             <form className={`edit_comment_form ${isEditActive ? "" : "hidden"}`} onSubmit={handleEditSubmit} method="POST">
                 <textarea 
-                    name="edit_message_textarea" 
-                    className="edit_message_textarea"
+                    name="edit_comment_textarea" 
+                    className="edit_comment_textarea"
                     placeholder="Type your message here."
                     onKeyUp={(event)=>handleTextAreaKeyUp(event, update_comment_btn)}
                     ref={edit_comment_textarea}></textarea>
