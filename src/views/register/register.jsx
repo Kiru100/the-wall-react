@@ -1,88 +1,53 @@
 import InputGroup from "../global_components/input_group";
 import image_of_person from "../../assets/images/Group_2019.svg";
-import React, {useEffect, useState} from "react";
-import {REGEX} from '../../assets/javascript/global';
+import React, {useEffect} from "react";
 import "./register.scss";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup"; 
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+    email: yup.string().email().required(),
+    password: yup.string().min(8).max(50).required(),
+    confirm_password: yup.string().oneOf([yup.ref("password")], null)
+});
 
 function Register() {
-    const [emailError, setEmailError] = useState(true);
-    const [passwordError, setPasswordError] = useState(true);
-    const [confirmPasswordError, setConfirmPasswordError] = useState(true);
-
+ 
     useEffect(() =>{
         document.title = "The Wall | Sign Up";
     },[])
 
-    useEffect(() => {
-        if(!emailError && !passwordError && !confirmPasswordError){
-            window.location.href = "/";
-        }
-    }, [emailError, passwordError, confirmPasswordError]);
+    const { register, handleSubmit, formState:{ errors } } = useForm({
+        resolver: yupResolver(schema)
+    });
 
-    const submitLoginForm = (event) => {
-        event.preventDefault();
-        validateForm(event);
-    }
+    const onSubmitRegisterForm = data => data ? window.location.href = "/" : "";
 
-    const validateForm = (input) =>{
-        const email_input_value = input.target.email.value;
-        const password_input_value = input.target.password.value;
-        const confirm_password_input_value = input.target.confirm_password.value;
-        
-        if(!email_input_value){
-            setEmailError("Email field is required.");
-        }
-        else if(!email_input_value.match(REGEX.valid_email)){
-            setEmailError("Email field is invalid.");
-        }
-        else{
-            setEmailError(false);
-        }
-
-        if(!password_input_value){
-            setPasswordError("Password field is required.");
-        }
-        else if(password_input_value < 8 ){
-            setPasswordError("Minimum 8 character for password field.");
-        }
-        else{
-            setPasswordError(false);
-        }
-
-        if(!confirm_password_input_value){
-            setConfirmPasswordError("Confirm password field is required.");
-        }
-        else if(confirm_password_input_value !==  password_input_value){
-            setConfirmPasswordError("Password does not match!");
-        }
-        else{
-            setConfirmPasswordError(false);
-        }
-    }
-    
     return (
         <div className="register">
             <main>
-                <form onSubmit={submitLoginForm}>
+                <form onSubmit={handleSubmit(onSubmitRegisterForm)} >
                     <h1>The Wall</h1>
                     <h2>Register</h2>
+
                     <InputGroup 
+                        reference={{...register('email')}}
                         label="Email" 
                         input_type="email" 
-                        input_name="email"
-                        error_message={emailError} 
+                        error_message={errors.email?.message} 
                         tab_index={1}/>
                     <InputGroup 
+                        reference={{...register('password')}}
                         label="Password" 
-                        input_type="password" 
-                        input_name="password"
-                        error_message={passwordError} 
+                        input_type="password"         
+                        error_message={errors.password?.message} 
                         tab_index={2}/>
                     <InputGroup 
                         label="Confirm Password" 
+                        reference={{...register('confirm_password')}}
                         input_type="password" 
-                        input_name="confirm_password"
-                        error_message={confirmPasswordError} 
+                        error_message={errors.confirm_password && "password should match"} 
                         tab_index={3}/>
                     <p className="agreement">By creating an account, you agree with the Wall's <a href="/register">Privacy Policy</a> and <a href="/register">Terms of Use</a>.</p>
                     <button type="submit" formNoValidate="formnovalidate">SIGN IN</button>
