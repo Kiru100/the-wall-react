@@ -15,25 +15,27 @@ function Login() {
     },[])
 
     useEffect(() => {
-        
-        if(emailError === false && passwordError === false){
+        if(!emailError && !passwordError){
             window.location.href = "/home";
         }
-        
     }, [emailError, passwordError]);
 
     const submitLoginForm = (event) => {
         event.preventDefault();
-        const email_input_value = event.target[0].value;
-        const password_input_value = event.target[1].value;
-        
+        validateForm(event);
+    }
+
+    const validateForm = (input) =>{
+        const email_input_value = input.target.email.value;
+        const password_input_value = input.target.password.value;
+
         if(!email_input_value){
             setEmailError("Email field is required.");
         }
         else if(email_input_value !== "ndasco@gmail.com"){
             setEmailError("Email field is invalid.");
         }
-        else if(!email_input_value.match(REGEX.email_validation)){
+        else if(!email_input_value.match(REGEX.valid_email)){
             setEmailError("Email field is invalid.");
         }
         else{
@@ -50,8 +52,6 @@ function Login() {
             setPasswordError(false);
         }
     }
-    
-
 
     return (
         <div className="login">
@@ -59,9 +59,20 @@ function Login() {
                 <form onSubmit={submitLoginForm}>
                     <h1>The Wall</h1>
                     <h2>Log In</h2>
-                    <InputGroup name="Email" type="email" error_message={emailError} tab_index={1}/>
-                    <InputGroup name="Password" type="password" error_message={passwordError} login_email={true} tab_index={2}/>
-                    <button type="submit">SIGN IN</button>
+                    <InputGroup 
+                        label="Email" 
+                        input_type="email" 
+                        input_name="email"
+                        error_message={emailError} 
+                        tab_index={1}/>
+                    <InputGroup 
+                        label="Password" 
+                        input_type="password"
+                        input_name="password"
+                        error_message={passwordError} 
+                        login_email={true} 
+                        tab_index={2}/>
+                    <button type="submit" formNoValidate="formnovalidate">SIGN IN</button>
                     <p className="sign_up_link">I don't have an account? <a href="/register">Sign Up</a></p>
                 </form>
             </main>

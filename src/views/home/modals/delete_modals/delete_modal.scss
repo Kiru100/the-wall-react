@@ -1,4 +1,4 @@
-@use "./global_modal";
+@use "../global_modal";
 
 .delete_modal{
     @include global_modal.modal();

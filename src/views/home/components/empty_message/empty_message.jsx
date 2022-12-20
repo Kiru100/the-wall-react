@@ -1,4 +1,4 @@
-import empty_message_icon from  "../../../assets/images/vector.png";
+import empty_message_icon from  "../../../../assets/images/vector.png";
 import "./empty_message.scss"
 
 function EmptyMessage(){

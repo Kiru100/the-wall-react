@@ -5,7 +5,6 @@ import {REGEX} from '../../assets/javascript/global';
 import "./register.scss";
 
 function Register() {
-
     const [emailError, setEmailError] = useState(true);
     const [passwordError, setPasswordError] = useState(true);
     const [confirmPasswordError, setConfirmPasswordError] = useState(true);
@@ -15,23 +14,25 @@ function Register() {
     },[])
 
     useEffect(() => {
-
-        if(emailError === false && passwordError === false && confirmPasswordError === false){
+        if(!emailError && !passwordError && !confirmPasswordError){
             window.location.href = "/";
         }
-
     }, [emailError, passwordError, confirmPasswordError]);
 
     const submitLoginForm = (event) => {
         event.preventDefault();
-        const email_input_value = event.target[0].value;
-        const password_input_value = event.target[1].value;
-        const confirm_password_input_value = event.target[2].value;
+        validateForm(event);
+    }
+
+    const validateForm = (input) =>{
+        const email_input_value = input.target.email.value;
+        const password_input_value = input.target.password.value;
+        const confirm_password_input_value = input.target.confirm_password.value;
         
         if(!email_input_value){
             setEmailError("Email field is required.");
         }
-        else if(!email_input_value.match(REGEX.email_validation)){
+        else if(!email_input_value.match(REGEX.valid_email)){
             setEmailError("Email field is invalid.");
         }
         else{
@@ -65,11 +66,26 @@ function Register() {
                 <form onSubmit={submitLoginForm}>
                     <h1>The Wall</h1>
                     <h2>Register</h2>
-                    <InputGroup name="Email" type="email" error_message={emailError} tab_index={1}/>
-                    <InputGroup name="Password" type="password" error_message={passwordError} tab_index={2}/>
-                    <InputGroup name="Confirm Password" type="password" error_message={confirmPasswordError} tab_index={3}/>
+                    <InputGroup 
+                        label="Email" 
+                        input_type="email" 
+                        input_name="email"
+                        error_message={emailError} 
+                        tab_index={1}/>
+                    <InputGroup 
+                        label="Password" 
+                        input_type="password" 
+                        input_name="password"
+                        error_message={passwordError} 
+                        tab_index={2}/>
+                    <InputGroup 
+                        label="Confirm Password" 
+                        input_type="password" 
+                        input_name="confirm_password"
+                        error_message={confirmPasswordError} 
+                        tab_index={3}/>
                     <p className="agreement">By creating an account, you agree with the Wall's <a href="/register">Privacy Policy</a> and <a href="/register">Terms of Use</a>.</p>
-                    <button type="submit">SIGN IN</button>
+                    <button type="submit" formNoValidate="formnovalidate">SIGN IN</button>
                     <p className="sign_in_link">Already have an account ? <a href="/">Sign In</a></p>
                 </form>
             </main>

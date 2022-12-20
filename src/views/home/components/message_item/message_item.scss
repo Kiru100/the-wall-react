@@ -1,18 +1,15 @@
-@use "../../../assets/scss/global";
+@use "../../../../assets/scss/global";
 
-.message_item,
-.comment_item{
+.message_item{
     border-radius: 6px;
     border: 1px solid global.$lavender_mist;
     list-style-type: none;
     margin-top: 20px;
     padding: 20px;
 
-    .message_wrapper,
-    .comment_wrapper{
+    .message_wrapper{
         
-        .message_text,
-        .comment_text{
+        .message_text{
             color: global.$primary_color;
             font: 300 16px/24px Poppins;
             margin-bottom: 10px;
@@ -56,15 +53,14 @@
 
                 .comment_icon{
                     @include global.icon();
-                    background: url("../../../assets/images/icons_group.png") no-repeat 0px -33px;
+                    background: url("../../../../assets/images/icons_group.png") no-repeat 0px -33px;
                 }
             }
         }
     }
 
     .edit_message_form,
-    .new_comment_form,
-    .edit_comment_form{
+    .new_comment_form{
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-end;
@@ -91,33 +87,31 @@
 
     .comment_icon{
         @include global.icon();
-        background: url("../../../assets/images/icons_group.png") no-repeat 0px -3px;
+        background: url("../../../../assets/images/icons_group.png") no-repeat 0px -3px;
     }
 
     .edit_icon{
         @include global.icon();
-        background: url("../../../assets/images/icons_group.png") no-repeat -30px -5px;
+        background: url("../../../../assets/images/icons_group.png") no-repeat -30px -5px;
     }
 
     .delete_icon{
         @include global.icon();
-        background: url("../../../assets/images/icons_group.png") no-repeat -60px -5px;
+        background: url("../../../../assets/images/icons_group.png") no-repeat -60px -5px;
     }
 
     .user_icon{
         @include global.icon();
-        background: url("../../../assets/images/user_icon.png") no-repeat center;
+        background: url("../../../../assets/images/user_icon.png") no-repeat center;
     }
 }
 
 
 @media only screen and (min-width: 1440px){
-    .message_item,
-    .comment_item{  
+    .message_item{  
         padding: 30px;
 
-        .message_wrapper,
-        .comment_wrapper{
+        .message_wrapper{
     
             .buttons_container{
 

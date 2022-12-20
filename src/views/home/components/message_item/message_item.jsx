@@ -1,6 +1,6 @@
-import CommentItem from "./comment_item";
+import CommentItem from "../comment_item/comment_item";
 import React, {useState, useRef} from "react";
-import {handleTextAreaKeyUp, toggleEdit} from "../../../assets/javascript/global";
+import {handleTextAreaKeyUp, toggleEdit} from "../../../../assets/javascript/global";
 import "./message_item.scss";
 
 function MessageItem(props){
@@ -21,12 +21,7 @@ function MessageItem(props){
     }
 
     const toggleAddComment = () =>{
-        if(isAddCommentActive){
-            setAddCommentActive(false);
-        }
-        else{
-            setAddCommentActive(true);
-        }
+        isAddCommentActive ? setAddCommentActive(false) : setAddCommentActive(true);
     }
 
     const handleEditSubmit = (event) =>{
@@ -38,13 +33,12 @@ function MessageItem(props){
 
     const handleAddComment = (event) =>{
         event.preventDefault()
-        let text_area_value = event.target[0].value;
+        let text_area_value = event.target.new_comment_form_textarea.value;
         props.onAddComment(text_area_value, props.message_id);
         add_comment_textarea.current.value = "";
         post_comment_btn.current.disabled = true;
         post_comment_btn.current.classList.add('disabled');
     }
-
 
     for(let comment_index in props.comment_list){
         comment_list.push(<CommentItem 
@@ -55,7 +49,6 @@ function MessageItem(props){
                                 onShowDeleteCommentModal={props.onShowDeleteModal}
                                 key={comment_index}/>)
     }
-
     
     return(
         <li className="message_item">

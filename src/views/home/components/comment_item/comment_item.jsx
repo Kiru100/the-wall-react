@@ -1,5 +1,6 @@
 import React,{useState, useRef} from "react";
-import {handleTextAreaKeyUp, toggleEdit} from "../../../assets/javascript/global";
+import {handleTextAreaKeyUp, toggleEdit} from "../../../../assets/javascript/global";
+import "./comment_item.scss";
 
 function CommentItem(props){
 
@@ -13,7 +14,7 @@ function CommentItem(props){
 
     const handleEditSubmit = (event) =>{
         event.preventDefault();
-        let comment_text = edit_comment_textarea.current.value;
+        let comment_text = event.target.edit_message_textarea.value;
         props.onEditComment(comment_text, props.message_id, props.comment_id);
         toggleEditComment();
     }

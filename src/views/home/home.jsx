@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import MessageItem from "./components/message_item";
-import EmptyMessage from "./components/empty_message";
-import CreateMessageModal from "./modals/create_message_modal";
-import DeleteMessageModal from "./modals/delete_message_modal";
-import DeleteCommentModal from "./modals/delete_comment_modal";
+import MessageItem from "./components/message_item/message_item";
+import EmptyMessage from "./components/empty_message/empty_message";
+import CreateMessageModal from "./modals/create_message_modal/create_message_modal";
+import DeleteMessageModal from "./modals/delete_modals/delete_message_modal";
+import DeleteCommentModal from "./modals/delete_modals/delete_comment_modal";
 import data from "../../assets/data/message.json";
 import "./home.scss";
 
@@ -92,8 +92,7 @@ function Home() {
                         <p><span>{message_count}</span> messages arranged latest posted</p>
                         <button type="button" 
                                 id="create_new_message_btn" 
-                                onClick={()=>setShowCreateMessageModal(true)}>
-                                Create Message</button>
+                                onClick={()=>{setShowCreateMessageModal(true)}}>Create Message</button>
                     </div>
                     <ul id="message_container">
                         {message_list.splice(0).reverse()}
