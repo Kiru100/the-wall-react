@@ -3,10 +3,11 @@ import "./delete_modal.scss";
 function DeleteMessageModal(props){
 
     const handleSubmitDelete = (event) =>{
-        props.onCloseModal();
+        event.preventDefault();
         const message_id = event.target.message_id.value;
         const comment_id = event.target.comment_id.value;
         props.onSubmitDelete(message_id, comment_id);
+        props.onCloseModal();
     }
 
     return(
