@@ -19,7 +19,7 @@ function DeleteMessageModal(props){
                 <p>This action cannot be undone.</p>
                 <div className="modal_button_container">
                     <button type="button" onClick={props.onCloseModal}>Cancel</button>
-                    <button type="submit">Yes, Remove it.</button>
+                    <button type="submit" >Yes, Remove it.</button>
                 </div>
             </form>
         </div>
