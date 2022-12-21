@@ -18,22 +18,26 @@ function Login() {
     },[]);
 
     const submitLoginForm = (data) => {
-       validateData(data); 
 
-       if(!errors.message && !errors.password){
+        if(validateData(data)){
             window.location.href = "/home";
-       }
+            console.log('here');
+        }
     }
 
     const validateData = (data) =>{
 
         if(data.email !== "ndasco@gmail.com"){
             setError('email', { type: 'custom', message: 'invalid email' });
+            return false;
         }
 
         if(data.password !== "testpassword"){
             setError('password', { type: 'custom', message: 'invalid password'});
+            return false;
         }
+        
+        return true;
     } 
 
     const { register, handleSubmit, setError , formState:{ errors }} = useForm({
