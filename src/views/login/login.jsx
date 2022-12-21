@@ -17,7 +17,7 @@ function Login() {
         document.title = "The Wall | Sign In";
     },[]);
 
-    const submitLoginForm = data => validateData(data) ? window.location.href = "/" : "";
+    const submitLoginForm = data => validateData(data) ? window.location.href = "/home" : "";
     
     const validateData = data =>{
         if(data.email !== "ndasco@gmail.com"){

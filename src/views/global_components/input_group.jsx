@@ -2,7 +2,6 @@ import React from "react";
 import "./input_group.scss";
 
 function InputGroup(props){
-
     return(
         <label className="input_group">
             {props.label}

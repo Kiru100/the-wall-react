@@ -1,9 +1,13 @@
+import "./message_item.scss";
 import CommentItem from "../comment_item/comment_item";
 import React, {useState, useRef} from "react";
 import {handleTextAreaKeyUp, toggleEdit} from "../../../../assets/javascript/global";
-import "./message_item.scss";
+import {useDispatch} from "react-redux";
+import {addComment, editMessage, setMessageToDelete} from "../../../../redux/messagesSlice";
+import {showModal} from "../../../../redux/modalsSlice";
 
 function MessageItem(props){
+    const dispatch = useDispatch();
 
     const [isEditActive, setEditActive] = useState(false);
     const [isAddCommentActive, setAddCommentActive] = useState(false);
@@ -24,17 +28,26 @@ function MessageItem(props){
         isAddCommentActive ? setAddCommentActive(false) : setAddCommentActive(true);
     }
 
+    const showDeleteMessageModal = () =>{
+        dispatch(showModal("delete_message_modal"))
+        dispatch(setMessageToDelete(props.message_id))
+    }
+
     const handleEditSubmit = (event) =>{
         event.preventDefault();
-        let message_text = edit_message_textarea.current.value;
-        props.onEditMessage(message_text, props.message_id);
+        let new_message_text = edit_message_textarea.current.value;
+        dispatch(editMessage({message_id: props.message_id, new_message_text: new_message_text}));
         toggleEditMessage();
     }
 
     const handleAddComment = (event) =>{
-        event.preventDefault()
+        event.preventDefault();
         let text_area_value = event.target.new_comment_form_textarea.value;
-        props.onAddComment(text_area_value, props.message_id);
+        dispatch(addComment({message_id: props.message_id, comment_text: text_area_value}));
+        resetForm();
+    }
+
+    const resetForm = () =>{
         add_comment_textarea.current.value = "";
         post_comment_btn.current.disabled = true;
         post_comment_btn.current.classList.add('disabled');
@@ -45,8 +58,6 @@ function MessageItem(props){
                                 comment_text={props.comment_list[comment_index]} 
                                 message_id={props.message_id}
                                 comment_id={comment_index}
-                                onEditComment={props.onEditComment}
-                                onShowDeleteCommentModal={props.onShowDeleteModal}
                                 key={comment_index}/>)
     }
     
@@ -70,7 +81,7 @@ function MessageItem(props){
                         </button> 
                     </li>
                     <li>
-                        <button type="button" className="delete_btn" onClick={()=>props.onShowDeleteModal(props.message_id, "message")}>
+                        <button type="button" className="delete_btn" onClick={showDeleteMessageModal}>
                             <span className="delete_icon"></span>
                             Delete 
                         </button> 
