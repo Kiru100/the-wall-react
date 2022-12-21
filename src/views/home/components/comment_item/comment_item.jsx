@@ -17,7 +17,7 @@ function CommentItem(props){
         let new_comment_text = event.target.edit_comment_textarea.value;
         let data = { message_id: props.message_id, 
                      comment_id: props.comment_id, 
-                     new_comment_text: new_comment_text }
+                     new_comment_text: new_comment_text };
 
         dispatch(editComment(data));
         toggleEditComment();

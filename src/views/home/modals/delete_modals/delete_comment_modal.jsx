@@ -4,7 +4,7 @@ import {hideModal} from "../../../../redux/modalsSlice";
 import {deleteComment} from "../../../../redux/messagesSlice";
 import {useSelector} from "react-redux";
 
-function DeleteMessageModal(props){
+function DeleteMessageModal(){
     const dispatch = useDispatch();
     const { comment_info_to_delete } = useSelector(state=> state.messages)
 

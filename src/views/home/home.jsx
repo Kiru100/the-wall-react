@@ -9,17 +9,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { showModal } from "../../redux/modalsSlice";
 
 function Home() {
-    const dispatch = useDispatch();
-
-    const { message } = useSelector(state => state.messages);
-    const { delete_comment_modal } = useSelector(state => state.modals);
-    const { delete_message_modal } = useSelector(state => state.modals);
-    const { create_message_modal } = useSelector(state => state.modals);
 
     useEffect(() => {
         document.title = "The Wall | Home";
     }, []);
 
+    const dispatch = useDispatch();
+    const { message } = useSelector(state => state.messages);
+    const { modals } = useSelector(state => state);
     let message_list = [];
     let message_count = Object.keys(message).length;
 
@@ -51,9 +48,9 @@ function Home() {
                     {message_count ? null : <EmptyMessage/>}
                 </main>
             </div>  
-            { create_message_modal ? <CreateMessageModal /> : null }
-            { delete_message_modal ? <DeleteMessageModal /> : null}
-            { delete_comment_modal ? <DeleteCommentModal /> : null}
+            { modals.create_message_modal ? <CreateMessageModal /> : null }
+            { modals.delete_message_modal ? <DeleteMessageModal /> : null}
+            { modals.delete_comment_modal ? <DeleteCommentModal /> : null}
         </>
     );
 }

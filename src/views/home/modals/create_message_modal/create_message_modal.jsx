@@ -5,12 +5,10 @@ import { useDispatch} from "react-redux";
 import { addMessage } from "../../../../redux/messagesSlice";
 import { hideModal } from "../../../../redux/modalsSlice";
 
-
-function CreateMessageModal(props){
+function CreateMessageModal(){
     const dispatch = useDispatch();
-
     const submit_button = useRef(null);
-
+    
     const handleSubmit = (event) =>{
         event.preventDefault();
         let new_message = event.target.create_message_textarea.value;
