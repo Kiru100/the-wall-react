@@ -11,10 +11,8 @@ function InputGroup(props){
                 {...props.reference}
                 type={props.input_type} 
                 className={props.error_message === undefined ? "" : "wrong_input"  } 
-                tabIndex={props.tab_index}
-                />
+                tabIndex={props.tab_index}/>
                 <p className="error_message">{props.error_message}</p>
-
         </label>
     )
 }

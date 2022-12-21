@@ -17,12 +17,17 @@ function Login() {
         document.title = "The Wall | Sign In";
     },[]);
 
-    const submitLoginForm = (data) =>{
-        validateData(data)
+    const submitLoginForm = (data) => {
+       validateData(data); 
+
+       if(!errors.message && !errors.password){
+            window.location.href = "/home";
+       }
     }
 
     const validateData = (data) =>{
-         if(data.email !== "ndasco@gmail.com"){
+
+        if(data.email !== "ndasco@gmail.com"){
             setError('email', { type: 'custom', message: 'invalid email' });
         }
 
@@ -34,12 +39,6 @@ function Login() {
     const { register, handleSubmit, setError , formState:{ errors }} = useForm({
         resolver: yupResolver(schema)
     });
-
-    useEffect(() =>{
-        if(Object.keys(errors).length === 0){
-            window.location.href = "/home";
-        }
-    },[errors]);
 
     return (
         <div className="login">
