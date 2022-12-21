@@ -17,26 +17,17 @@ function Login() {
         document.title = "The Wall | Sign In";
     },[]);
 
-    const submitLoginForm = (data) => {
-
-        if(validateData(data)){
-            window.location.href = "/home";
-            console.log('here');
-        }
-    }
-
-    const validateData = (data) =>{
-
+    const submitLoginForm = data => validateData(data) ? window.location.href = "/" : "";
+    
+    const validateData = data =>{
         if(data.email !== "ndasco@gmail.com"){
             setError('email', { type: 'custom', message: 'invalid email' });
             return false;
         }
-
         if(data.password !== "testpassword"){
             setError('password', { type: 'custom', message: 'invalid password'});
             return false;
         }
-        
         return true;
     } 
 

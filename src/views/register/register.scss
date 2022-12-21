@@ -60,12 +60,14 @@
             .sign_in_link{
                 color: global.$light_grey;
                 font: 400 16px/22px Poppins;
+                letter-spacing: 0.03em;
                 margin-top: 40px;
                 text-align: center;
 
                 a{
                     color: global.$secondary_color;
                     font: 400 16px/22px Poppins;
+                    letter-spacing: 0.03em;
                     text-decoration: none;
                 }
             }
