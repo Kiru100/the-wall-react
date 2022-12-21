@@ -1,26 +1,35 @@
+import "./comment_item.scss";
 import React,{useState, useRef} from "react";
 import {handleTextAreaKeyUp, toggleEdit} from "../../../../assets/javascript/global";
-import "./comment_item.scss";
+import {useDispatch} from "react-redux";
+import {editComment, setCommentToDelete} from "../../../../redux/messagesSlice";
+import {showModal} from "../../../../redux/modalsSlice";
 
 function CommentItem(props){
+    const dispatch = useDispatch();
 
     const [isEditActive, setEditActive] = useState(false);
     const edit_comment_textarea = useRef(null);
     const update_comment_btn = useRef(null);
 
-    const showDeleteModal = () =>{
-        props.onShowDeleteCommentModal(props.message_id, "comment", props.comment_id);
-    }
-
     const handleEditSubmit = (event) =>{
         event.preventDefault();
-        let comment_text = event.target.edit_comment_textarea.value;
-        props.onEditComment(comment_text, props.message_id, props.comment_id);
+        let new_comment_text = event.target.edit_comment_textarea.value;
+        let data = { message_id: props.message_id, 
+                     comment_id: props.comment_id, 
+                     new_comment_text: new_comment_text };
+
+        dispatch(editComment(data));
         toggleEditComment();
     }
 
     const toggleEditComment = () =>{
         toggleEdit(isEditActive, setEditActive, edit_comment_textarea, props.comment_text);
+    }
+
+    const showDeleteCommentModal = () =>{
+        dispatch(setCommentToDelete({message_id: props.message_id, comment_id: props.comment_id}))
+        dispatch(showModal("delete_comment_modal"));
     }
 
     return(
@@ -37,7 +46,7 @@ function CommentItem(props){
                         </button> 
                     </li>
                     <li>
-                        <button type="button" className="delete_btn" onClick={showDeleteModal}>
+                        <button type="button" className="delete_btn" onClick={showDeleteCommentModal}>
                             <span className="delete_icon"></span>
                             Delete 
                         </button> 

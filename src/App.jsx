@@ -3,7 +3,6 @@ import Login from './views/login/login';
 import Register from './views/register/register';
 import Home from './views/home/home';
 
-
 function App() {
   return (
     <Routes>

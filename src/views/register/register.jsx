@@ -1,7 +1,7 @@
+import "./register.scss";
 import InputGroup from "../global_components/input_group";
 import image_of_person from "../../assets/images/Group_2019.svg";
 import React, {useEffect} from "react";
-import "./register.scss";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"; 
 import * as yup from "yup";
@@ -30,7 +30,6 @@ function Register() {
                 <form onSubmit={handleSubmit(onSubmitRegisterForm)} >
                     <h1>The Wall</h1>
                     <h2>Register</h2>
-
                     <InputGroup 
                         reference={{...register('email')}}
                         label="Email" 
@@ -54,10 +53,10 @@ function Register() {
                     <p className="sign_in_link">Already have an account ? <a href="/">Sign In</a></p>
                 </form>
             </main>
-        <div className="image_holder">
-          <img src={image_of_person} alt="A person without a face holding a brown paper" />
+            <div className="image_holder">
+                <img src={image_of_person} alt="A person without a face holding a brown paper" />
+            </div>
         </div>
-      </div>
     );
   }
   
