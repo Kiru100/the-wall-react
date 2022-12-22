@@ -1,6 +1,6 @@
 import "./create_message_modal.scss";
 import React, {useRef} from "react";
-import {handleTextAreaKeyUp} from "../../../../assets/javascript/global";
+import {handleTextAreaKeyUp} from "../../../../assets/javascript/helpers";
 import { useDispatch} from "react-redux";
 import { addMessage } from "../../../../redux/messagesSlice";
 import { hideModal } from "../../../../redux/modalsSlice";

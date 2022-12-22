@@ -15,7 +15,7 @@ export const modalsSlice = createSlice({
             state[action.payload] = false;
         }
     },  
-})
+});
 
 export const { hideModal, showModal } = modalsSlice.actions;
 export default modalsSlice.reducer;

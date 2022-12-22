@@ -46,7 +46,7 @@ export const messagesSlice = createSlice({
             state.comment_info_to_delete = {message_id: action.payload.message_id, comment_id: action.payload.comment_id};
         }
     },
-})
+});
 
 export const { addMessage, addComment, editMessage, editComment, deleteMessage, setMessageToDelete, setCommentToDelete, deleteComment } = messagesSlice.actions;
 export default messagesSlice.reducer;

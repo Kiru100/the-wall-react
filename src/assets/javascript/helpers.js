@@ -1,10 +1,3 @@
-const REGEX = {
-    /* eslint-disable-next-line */
-    valid_email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g 
-}
-
-
-
 const handleTextAreaKeyUp = (event, button) =>{
     let textarea_value = event.target.value;
 
@@ -28,4 +21,4 @@ const toggleEdit = (stateName, setState, textarea, text) =>{
     }
 }
 
-export { REGEX, handleTextAreaKeyUp, toggleEdit};
+export { handleTextAreaKeyUp, toggleEdit };

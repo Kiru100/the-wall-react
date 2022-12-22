@@ -1,7 +1,7 @@
 import "./message_item.scss";
 import CommentItem from "../comment_item/comment_item";
 import React, {useState, useRef} from "react";
-import {handleTextAreaKeyUp, toggleEdit} from "../../../../assets/javascript/global";
+import {handleTextAreaKeyUp, toggleEdit} from "../../../../assets/javascript/helpers";
 import {useDispatch} from "react-redux";
 import {addComment, editMessage, setMessageToDelete} from "../../../../redux/messagesSlice";
 import {showModal} from "../../../../redux/modalsSlice";

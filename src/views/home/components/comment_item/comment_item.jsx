@@ -1,6 +1,6 @@
 import "./comment_item.scss";
 import React,{useState, useRef} from "react";
-import {handleTextAreaKeyUp, toggleEdit} from "../../../../assets/javascript/global";
+import {handleTextAreaKeyUp, toggleEdit} from "../../../../assets/javascript/helpers";
 import {useDispatch} from "react-redux";
 import {editComment, setCommentToDelete} from "../../../../redux/messagesSlice";
 import {showModal} from "../../../../redux/modalsSlice";
@@ -15,9 +15,7 @@ function CommentItem(props){
     const handleEditSubmit = (event) =>{
         event.preventDefault();
         let new_comment_text = event.target.edit_comment_textarea.value;
-        let data = { message_id: props.message_id, 
-                     comment_id: props.comment_id, 
-                     new_comment_text: new_comment_text };
+        let data = { message_id: props.message_id, comment_id: props.comment_id, new_comment_text: new_comment_text };
 
         dispatch(editComment(data));
         toggleEditComment();

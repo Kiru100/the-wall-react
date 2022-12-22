@@ -20,6 +20,7 @@ function Login() {
     const submitLoginForm = data => validateData(data) ? window.location.href = "/home" : "";
     
     const validateData = data =>{
+
         if(data.email !== "ndasco@gmail.com"){
             setError('email', { type: 'custom', message: 'invalid email' });
             return false;
